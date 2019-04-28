@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div class="upload">上传</div>
+  <div class="upload">上传</div>
+  <div class="upload">上传</div>
+  <div class="file">上传</div>
+
+  <script src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+  <script src="./file.js"></script>
+  <script>
+    judgeUploadFile({
+      ele:'.upload', // 要替换的按钮
+      fAtion: '/coreEnterprise/uploadForIE9', //action
+      fBtnClass: 'layui-btn theme-blue', // 上传按钮的样式
+      mark: '1', // 标识 (用来区分回调函数)
+      fn: function(res){
+        // 回调函数事件
+        alert(1)
+      }
+    })
+    judgeUploadFile({
+      ele:'.file', // 要替换的按钮
+      fAtion: '/coreEnterprise/uploadForIE9', //action
+      fBtnClass: 'layui-btn theme-blue', // 上传按钮的样式
+      mark: '2', // 标识 (用来区分回调函数)
+      fn: function(res){
+        // 回调函数事件
+        alert(2)
+      }
+    })
+  </script>
+</body>
+</html>
