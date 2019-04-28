@@ -4,6 +4,7 @@ layui上传控件在ie9有兼容问题,上传请求后的回调`done:function(){
 1. 用表单提交的方式`form.submit()`,点击`<input type='file'>`执行`onchange`事件。
 2. 提交`form`时界面会跳转，所以把界面跳转指向`iFrame`，跳转的只是`iFrame`里面的内容，把`iFrame`隐藏掉，就像异步提交一样（实际上不是异步，是伪装的）。
 3. 表单一但提交，服务器就会处理请求，处理完请求之后，就会把返回值放到`iframe`中,`iframe`加上`onload`事件，一旦这个事件触发，就表示服务端把你的请求处理完毕了。
+
 **用表单提交的方式form.submit()**
 1. 在IE9中不支持`formData`对象，无法使用`ajax`上传文件，所以通过在一个`form`表单中直接提交到服务器上传。
 2. `enctype`是对`form`中数据进行什么编码，如果上传的文件的话，必须指定为**`multipart/form-data`**。
@@ -19,6 +20,7 @@ layui上传控件在ie9有兼容问题,上传请求后的回调`done:function(){
 注意： 
 1. 上面主要是需要指定`form`的`target`属性与`iframe`的`name`一致，这样提交表单后不会刷新页面，并且在`iframe`的`body`中可以拿到返回的数据。
 2. 在IE9中如果返回的是`json`格式的数据不会被解析，这时会弹出提示框是否要下载。解决方法是后台修改`response`的`content-type`为`text/plain`或`text/html`。
+
 js:
 ```
 $(".fileUpload").change( function () {
@@ -38,6 +40,7 @@ $(".fileUpload").change( function () {
 	}
 })
 ```
+
 css:
 ```
 .fileUploadFrom'{
@@ -55,7 +58,7 @@ css:
     fontSize: '200px',
 }
 ```
----
+
 判断IE版本:
 ```
 function IEVersion() {
